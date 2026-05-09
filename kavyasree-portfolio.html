@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kavyasree H – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F0;
+    --surface: #FFFFFF;
+    --ink: #1A1814;
+    --muted: #6B6860;
+    --accent: #2D6A4F;
+    --accent-light: #B7D5C8;
+    --accent-pale: #EAF3EF;
+    --rule: #E0DDD8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 80px 48px 60px;
+    max-width: 1100px; margin: 0 auto;
+    gap: 60px;
+  }
+  .hero-text { flex: 1; }
+  .hero-label {
+    display: inline-block; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+    border: 1px solid var(--accent-light); padding: 4px 12px;
+    border-radius: 2px; margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1rem; color: var(--muted); max-width: 460px;
+    line-height: 1.7; margin-bottom: 36px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff; text-decoration: none;
+    padding: 12px 28px; font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.04em; border-radius: 3px; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    color: var(--ink); text-decoration: none; padding: 12px 28px;
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    border: 1px solid var(--rule); border-radius: 3px; transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-aside {
+    flex: 0 0 260px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-card {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 28px; font-size: 0.88rem;
+  }
+  .hero-card .avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--accent-pale); border: 2px solid var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.5rem; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .hero-card h3 { font-family: var(--serif); font-size: 1rem; margin-bottom: 4px; }
+  .hero-card p { color: var(--muted); font-size: 0.82rem; margin-bottom: 16px; }
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .contact-list li { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--muted); }
+  .contact-list a { color: var(--accent); text-decoration: none; }
+  .contact-list .icon { width: 16px; text-align: center; flex-shrink: 0; }
+
+  /* SECTIONS */
+  section { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.2; margin-bottom: 48px;
+  }
+  .divider { border: none; border-top: 1px solid var(--rule); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent-light); transform: translateY(-2px); }
+  .skill-card h4 { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .skill-card li { font-size: 0.88rem; color: var(--muted); }
+  .skill-card li::before { content: "·  "; color: var(--accent); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 140px 1fr;
+    gap: 0 40px; padding: 32px 0; border-top: 1px solid var(--rule);
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--rule); }
+  .exp-date { font-size: 0.82rem; color: var(--muted); padding-top: 4px; }
+  .exp-content h3 { font-size: 1rem; font-weight: 500; margin-bottom: 4px; }
+  .exp-content .org { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+  .exp-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .project-card {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent-light); transform: translateY(-3px); }
+  .project-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-pale);
+    padding: 3px 8px; border-radius: 2px; width: fit-content;
+  }
+  .project-card h3 { font-family: var(--serif); font-size: 1.05rem; }
+  .project-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; flex: 1; }
+
+  /* CERTS */
+  .certs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .cert-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 5px; padding: 14px 18px;
+    font-size: 0.86rem;
+  }
+  .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* ACHIEVEMENTS */
+  .achieve-list { display: flex; flex-direction: column; gap: 16px; }
+  .achieve-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 20px 24px; background: var(--surface);
+    border: 1px solid var(--rule); border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .achieve-num { font-family: var(--serif); font-size: 1.2rem; color: var(--accent); flex-shrink: 0; line-height: 1.3; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: #fff; padding: 60px 48px;
+    text-align: center;
+  }
+  footer h2 { font-family: var(--serif); font-size: 2rem; margin-bottom: 12px; }
+  footer p { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 28px; }
+  .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .footer-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent-light); }
+  .footer-copy { margin-top: 40px; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { flex-direction: column; padding: 100px 20px 40px; gap: 32px; }
+    .hero-aside { flex: unset; width: 100%; }
+    section { padding: 60px 20px; }
+    .exp-item { grid-template-columns: 1fr; gap: 4px; }
+    footer { padding: 48px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Kavyasree H</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="hero-label">CS · Cyber Security · Palakkad</span>
+    <h1>Building secure,<br><em>purposeful</em><br>technology.</h1>
+    <p class="hero-sub">Computer Science & Cyber Security Engineering student with hands-on experience in offensive security, Android app development, and IoT systems.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="mailto:kavyasree9903@gmail.com" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-aside">
+    <div class="hero-card">
+      <div class="avatar">K</div>
+      <h3>H Kavyasree</h3>
+      <p>B.Tech — CS & Cyber Security<br>Jyothi Engineering College</p>
+      <ul class="contact-list">
+        <li><span class="icon">✉</span> <a href="mailto:kavyasree9903@gmail.com">kavyasree9903@gmail.com</a></li>
+        <li><span class="icon">📞</span> +91-6238462254</li>
+        <li><span class="icon">🔗</span> <a href="https://linkedin.com/in/kavya-sree" target="_blank">linkedin.com/in/kavya-sree</a></li>
+        <li><span class="icon">💻</span> <a href="https://github.com/KavyaSree" target="_blank">github.com/KavyaSree</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto 0 auto;">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Capabilities</div>
+  <h2 class="section-title reveal">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <h4>Programming</h4>
+      <ul>
+        <li>C++</li>
+        <li>Python</li>
+        <li>Kotlin</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Cyber Security</h4>
+      <ul>
+        <li>Ethical Hacking</li>
+        <li>Vulnerability Assessment</li>
+        <li>Offensive Security</li>
+        <li>Penetration Testing</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <h4>App Development</h4>
+      <ul>
+        <li>Android Studio</li>
+        <li>Jetpack Compose</li>
+        <li>UI/UX Fundamentals</li>
+        <li>Android SDK</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Tools & Platforms</h4>
+      <ul>
+        <li>Git</li>
+        <li>VS Code</li>
+        <li>Firebase</li>
+        <li>ESP32 / IoT</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <h4>Soft Skills</h4>
+      <ul>
+        <li>Teamwork</li>
+        <li>Leadership</li>
+        <li>Communication</li>
+        <li>Adaptability</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Work History</div>
+  <h2 class="section-title reveal">Internships</h2>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-date">2024</div>
+      <div class="exp-content">
+        <h3>Intern – Offensive Security</h3>
+        <div class="org">Technovalley Software Consulting · AKS, Kerala</div>
+        <p>Completed a 2-week intensive program focused on offensive security techniques within the cybersecurity stack. Gained practical exposure to penetration testing methodologies and vulnerability exploitation.</p>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">2024</div>
+      <div class="exp-content">
+        <h3>Intern – Android App Development</h3>
+        <div class="org">ICT Academy of Kerala · Monsoon Internship</div>
+        <p>Completed a 1-month internship developing Android applications, building hands-on skills in Android Studio, mobile UI design, and backend integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Work</div>
+  <h2 class="section-title reveal">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <span class="project-tag">Cyber Security</span>
+      <h3>Phishing Awareness Simulator</h3>
+      <p>Web-based tool that simulates real-world phishing scenarios and provides feedback to improve user vigilance against social engineering attacks.</p>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">IoT · AI</span>
+      <h3>FloodGuardX</h3>
+      <p>Low-cost IoT and AI-powered early flood warning system using ESP32 microcontrollers, ultrasonic sensors, and Firebase. Includes automatic power cutoff, SOS signalling, and a React rescue dashboard. Built under ₹3,000.</p>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Mobile · Security</span>
+      <h3>Fraud Detection in E-Commerce</h3>
+      <p>Mobile app addressing client-side cart manipulation vulnerabilities — protecting against price tampering, quantity changes, and unauthorized discount exploitation.</p>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">NASA Space Apps</span>
+      <h3>NASAFarmNavigator</h3>
+      <p>Interactive web-based game for the NASA Space App Challenge featuring 3 gameplay levels on fertilisation, irrigation, and harvesting, with integrated frontend and backend workflows.</p>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Mobile</span>
+      <h3>Android Productivity App</h3>
+      <p>Modern Android app built with Kotlin and Jetpack Compose for daily task management and expense tracking. Features voice input, dark mode, and CSV export.</p>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Android</span>
+      <h3>College Mobile Application</h3>
+      <p>Team-built Android app during ICT Academy internship at Jyothi Engineering College, focusing on user experience design and backend integration.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">Learning</div>
+  <h2 class="section-title reveal">Certifications</h2>
+  <div class="certs-list">
+    <div class="cert-item reveal"><span class="cert-dot"></span> Cisco – Cyber Security</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> Cisco – Digital Awareness</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> Cisco – Introduction to Data Science</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> Infosys – Cyber Security</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> Infosys – Applied Ethical Hacking</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> Infosys – Artificial Intelligence for All</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> ICT Academy – Android App Development</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> SCALER – Python for Beginners</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> NIT-Calicut – Embedded Systems Workshop</div>
+    <div class="cert-item reveal"><span class="cert-dot"></span> NDLI Club – Re-engineering Minds of AI</div>
+  </div>
+</section>
+
+<hr class="divider" style="max-width:1100px;margin:0 auto;">
+
+<!-- ACHIEVEMENTS -->
+<section>
+  <div class="section-label reveal">Highlights</div>
+  <h2 class="section-title reveal">Achievements</h2>
+  <div class="achieve-list">
+    <div class="achieve-item reveal">
+      <span class="achieve-num">01</span>
+      <span>Participated as a <strong>Galactic Problem Solver</strong> in the NASA International Space App Challenge 2024</span>
+    </div>
+    <div class="achieve-item reveal">
+      <span class="achieve-num">02</span>
+      <span>Built a web-based <strong>Phishing Awareness Simulator</strong> to promote cybersecurity education</span>
+    </div>
+    <div class="achieve-item reveal">
+      <span class="achieve-num">03</span>
+      <span>Completed 2-week <strong>Offensive Security Internship</strong> at Technovalley Software Consulting via AKS</span>
+    </div>
+    <div class="achieve-item reveal">
+      <span class="achieve-num">04</span>
+      <span>Completed 1-month <strong>Android App Development Internship</strong> with ICT Academy (Monsoon 2024)</span>
+    </div>
+    <div class="achieve-item reveal">
+      <span class="achieve-num">05</span>
+      <span><strong>Design Team Lead</strong> of FOSS Club – leading open-source initiatives and community learning</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <h2>Let's Connect</h2>
+  <p>Open to opportunities in cybersecurity, app development, and tech internships.</p>
+  <div class="footer-links">
+    <a href="mailto:kavyasree9903@gmail.com">kavyasree9903@gmail.com</a>
+    <a href="tel:+916238462254">+91-6238462254</a>
+    <a href="https://linkedin.com/in/kavya-sree" target="_blank">LinkedIn</a>
+    <a href="https://github.com/KavyaSree" target="_blank">GitHub</a>
+  </div>
+  <p class="footer-copy">© 2025 H Kavyasree · Palakkad, Kerala, India</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
